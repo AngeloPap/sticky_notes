@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Bulletin Board - {{page_title}} {% endblock title %}
+
+{% block content %}
+    <h1> {{ page_title }}</h1>
+        {% for post in posts %}
+            <button style="width: 200px; height: 200px;">
+                <a href="{% url 'post_detail' post.id %}">
+                    {{ post.title }}
+                </a>
+            </button>
+        {% empty %}
+            <p>No posts have been added yet.</p>
+        {% endfor %}
+    <br>
+    <br>
+    <button type="button">
+        <a href= "{% url 'create_post' %}">Create post</a>
+    </button>
+    <button type="button">
+        <a href= "{% url 'welcome' %}">Return to main menu</a>
+    </button>
+{% endblock content %} 

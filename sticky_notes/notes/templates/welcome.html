@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Welcome Page{% endblock title %}
+
+{% block content %}
+<div class = "welcome page">
+<button>
+    <h2><a href="{% url 'post_list' %}"> View posts</a></h2>
+</button>
+<button>
+    <h2><a href="{% url 'create_post' %}"> Create posts</a></h2>
+</button>   
+</div>
+{% endblock content %}

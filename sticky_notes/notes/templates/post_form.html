@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Bulletin Board - {% if form.instance.id %}Edit{% else
+%}Create{% endif %} Post{% endblock %}
+
+{% block content %}
+    <h2> {% if form.instance.id %}Edit{% else %}Create{% endif %}
+    Post</h2>
+    <form method="post" action="{% if form.instance.id %}
+                                    {% url 'update_post' form.instance.id %}
+                                {% else %}
+                                    {% url 'create_post' %}
+                                {% endif %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button> 
+    </form>
+    <br>
+    <br>
+    <button type="button">
+        <a href= "{% url 'post_list' %}">Return to post list</a>
+    </button>
+    <button type="button">
+        <a href= "{% url 'add_author' %}">Add author</a>
+    </button>
+    <button type="button">
+        <a href= "{% url 'author_list' %}">Author List</a>
+    </button>
+{% endblock %}
