@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Welcome Page{% endblock title %}
+
+{% block content %}
+<div class = "text-center">
+<button style="height:50px;width:150px" class="button">
+    <a href="{% url 'post_list' %}"> View posts</a>
+</button>
+<button style="height:50px;width:150px" class="button"> 
+    <a href="{% url 'create_post' %}"> Create posts</a>
+</button>
+<button style="height:50px;width:150px" class="button">
+    <a href="{% url 'author_list' %}"> View authors</a>
+</button>
+<button style="height:50px;width:150px" class="button">
+    <a href="{% url 'add_author' %}"> Add author</a>
+</button>  
+</div>
+{% endblock content %}

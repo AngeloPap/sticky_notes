@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Bulletin Board - {{ page_title }}{% endblock title %}
+
+{% block content %}
+<div class="container d-flex flex-column align-items-center">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-4 fs-1 mb-4">{{ page_title }}</h1>
+        </div>
+        <ul class="list-unstyled">
+            {% for author in authors %}
+                <li class="mb-2 text-center">
+                    {{ author.name }}
+                    <button class="author_button">
+                        <a href="{% url 'delete_author' author.id %}">Delete</a>
+                    </button>
+                </li>
+            {% empty %}
+                <li class="text-center">There aren't any current authors yet.</li>
+            {% endfor %}    
+        </ul>
+        <div class="mt-4 text-center">
+            <button class="button">
+                <a href="{% url 'welcome' %}">Return to main menu</a>
+            </button>
+            <button class="button">
+                <a href="{% url 'add_author' %}">Add author</a>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock content %}

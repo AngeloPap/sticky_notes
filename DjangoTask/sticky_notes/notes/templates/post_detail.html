@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Bulletin board - {{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column align-items-center">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-4 fs-1 mb-4">{{ post.title }}</h1>
+        </div>
+        <div class="col-12 text-center">
+            <p>Post content: {{ post.content }}</p>
+            <p>Created at: {{ post.created_at }}</p>
+            <p>Author: {{ post.author }}</p>
+        </div>
+        <div class="mt-4 text-center">
+            <button class="button">
+                <a href="{% url 'post_list' %}">Back to post list</a>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

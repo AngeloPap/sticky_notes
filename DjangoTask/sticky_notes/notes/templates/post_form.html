@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Bulletin Board - {% if form.instance.id %}Edit{% else
+%}Create{% endif %} Post{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="display-4 fs-1 mb-4 text-center">
+                {% if form.instance.id %}Edit{% else %}Create{% endif %} Post
+            </h2>
+            <form method="post" action="{% if form.instance.id %}
+                                    {% url 'update_post' form.instance.id %}
+                                {% else %}
+                                    {% url 'create_post' %}
+                                {% endif %}">
+                {% csrf_token %}
+                <div class="form-group row justify-content-center">
+                    <label for="{{ form.title.id_for_label }}" class="text-center">Post Title</label>
+                    <div class="text-center">
+                    {{ form.title }}
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="{{ form.content.id_for_label }}" class="text-center">Post Content</label>
+                    <div class="text-center">
+                    {{ form.content }}
+                    </div>
+                <div class="form-group row justify-content-center">
+                    <label for="{{ form.author.id_for_label }}" class="text-center">Author</label>
+                    <div class="text-center">
+                        {{ form.author }}
+                    </div>
+                </div>
+                </div>
+                <div class="form-group row mt-2">
+                    <div class="text-center">
+                        <button type="submit" class ="btn btn-secondary" style="color:#12e6b1">Save</button>
+                    </div>
+                </div>
+
+            </form>
+            <div class="mt-4 text-center">
+                <button class="button mr-2">
+                    <a href= "{% url 'welcome' %}">Return to main menu</a>
+                </button>
+                <button class="button">
+                    <a href= "{% url 'post_list' %}">Return to post list</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

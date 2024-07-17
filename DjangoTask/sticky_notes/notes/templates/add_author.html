@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Bulletin board - {{ page_title }}{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="display-4 fs-1 mb-4 text-center">
+                {{ page_title }}
+            </h2>
+            <form method="post" action="{% url 'add_author' %}" class="text-center">
+                {% csrf_token %}
+                <div class="form-group row justify-content-center">
+                    <label for="{{ author.name.id_for_label }}" class="text-center">Author Name</label>
+                    <div class="text-center">
+                        {{ author.name }}
+                    </div>
+                </div>
+                <div class="form-group row mt-2">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-secondary" style="color:#12e6b1">Save</button>
+                    </div>
+                </div>
+            </form>
+            <div class="mt-4 text-center">
+                <button class="button mr-2">
+                    <a href="{% url 'welcome' %}">Return to main menu</a>
+                </button>
+                <button class="button">
+                    <a href="{% url 'author_list' %}">Return to authors</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
